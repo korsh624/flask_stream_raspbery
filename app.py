@@ -1,5 +1,4 @@
-import io
-import picamera
+import cv2
 import serial
 data='open'
 read="___"
