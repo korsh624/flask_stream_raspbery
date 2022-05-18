@@ -1,10 +1,11 @@
 import cv2
 import serial
+from flask import Flask, render_template, Response, request, redirect, url_for
 data='open'
 read="___"
 
 data='open'
-arduino = serial.Serial('/dev/ttyUSB0',9600)
+arduino = serial.Serial('/dev/ttyACM0',9600)
 def sendmessage():
     count=0
     while (count<1):
