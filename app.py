@@ -4,14 +4,14 @@ import serial
 data='open'
 read="___"
 arduino = serial.Serial('/dev/ttyUSB0',9600)
-camera=picamera()
+cap = cv2.VideoCapture(0)
 print("connected camera")
 app = Flask(__name__)
 def gen_frames():  
     while True:
         # data = arduino.readline()
         #prinnt("# read the port data")
-        success, frame = camera.read()  # read the camera frame
+        success,frame = cap.read()  # read the camera frame
         frame=cv2.resize(frame, (800, 600))
         font = cv2.FONT_HERSHEY_COMPLEX
         cv2.putText(frame, read, (10, 50), font, 1, color=(0, 255, 255), thickness=2)
