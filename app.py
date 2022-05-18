@@ -3,7 +3,7 @@ import picamera
 import serial
 data='open'
 read="___"
-arduino = serial.Serial('ttyUSB0',9600)
+arduino = serial.Serial('/dev/ttyUSB0',9600)
 camera=picamera()
 print("connected camera")
 app = Flask(__name__)
