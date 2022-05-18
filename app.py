@@ -2,7 +2,21 @@ import cv2
 import serial
 data='open'
 read="___"
+
+data='open'
 arduino = serial.Serial('/dev/ttyUSB0',9600)
+def sendmessage():
+    count=0
+    while (count<1):
+        arduino.write(data.encode())
+        read=arduino.readline()
+        print(read)
+        time.sleep(1)
+        count=count+1
+    count=0
+
+
+
 cap = cv2.VideoCapture(0)
 print("connected camera")
 app = Flask(__name__)
