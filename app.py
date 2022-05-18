@@ -1,15 +1,12 @@
-#Import necessary libraries
-from flask import Flask, render_template, Response
-import cv2
-#Initialize the Flask app
-app = Flask(__name__)
+import io
+import picamera
 import serial
-import time
 data='open'
 read="___"
-arduino = serial.Serial('COM7',9600)
-camera = cv2.VideoCapture(0)
+arduino = serial.Serial('ttyUSB0',9600)
+camera=picamera()
 print("connected camera")
+app = Flask(__name__)
 def gen_frames():  
     while True:
         # data = arduino.readline()
@@ -17,8 +14,6 @@ def gen_frames():
         success, frame = camera.read()  # read the camera frame
         frame=cv2.resize(frame, (800, 600))
         font = cv2.FONT_HERSHEY_COMPLEX
-        # cv2.putText(frame, "data", (10, 50), font, 1, color=(0, 255, 255), thickness=2)
-        # cv2.putText(frame, data, (10, 50), font, 1, color=(0, 255, 255), thickness=2)
         cv2.putText(frame, read, (10, 50), font, 1, color=(0, 255, 255), thickness=2)
         if not success:
             break
