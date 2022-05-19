@@ -15,8 +15,7 @@ def sendmessage():
     while (count<1):
         arduino.write(data.encode())
         print ("Send message")
-        read=arduino.readline()
-        read = str(read.encode())
+        read=str(arduino.readline())
         print(read)
         time.sleep(1)
         count=count+1
