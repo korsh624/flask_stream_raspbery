@@ -39,5 +39,11 @@ def index():
 @app.route('/video_feed')
 def video_feed():
     return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
+
+@app.route('/update_telemetry')
+def forvard():
+    sendmessage()
+    return ("nothing")
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=False)
