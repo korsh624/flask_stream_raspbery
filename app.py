@@ -11,6 +11,7 @@ cap=cv2.VideoCapture(1)
 print("connected camera")
 def sendmessage():
     count=0
+    global read
     while (count<1):
         arduino.write(data.encode())
         print ("Send message")
