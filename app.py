@@ -7,7 +7,7 @@ read="___"
 
 data='open'
 arduino = serial.Serial('/dev/ttyACM0',9600)
-cap=cv2.VideoCapture(0)
+cap=cv2.VideoCapture(1)
 print("connected camera")
 def sendmessage():
     count=0
@@ -15,7 +15,7 @@ def sendmessage():
     while (count<1):
         arduino.write(data.encode())
         print ("Send message")
-        read=arduino.readline()
+        read=str(arduino.readline())
         print(read)
         time.sleep(1)
         count=count+1
