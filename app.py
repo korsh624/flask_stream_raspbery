@@ -26,7 +26,9 @@ def gen_frames():
     while True:
         success,frame=cap.read()
         font = cv2.FONT_HERSHEY_COMPLEX
-        cv2.putText(frame, read, (10, 50), font, 1, color=(0, 255, 255), thickness=2)
+        if read!="___":
+            print("print teleometry")
+            cv2.putText(frame, read, (10, 50), font, 1, color=(0, 255, 255), thickness=2)
         if not success:
             break
         else:
