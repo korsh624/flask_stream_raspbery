@@ -48,9 +48,9 @@ def gen_frames():
         #     image = frame.array
         #     cv2.imshow("Frame", image)
         #     key = cv2.waitKey(1) & 0xFF
-        success,image=cap.read()
+        success,frame=cap.read()
         font = cv2.FONT_HERSHEY_COMPLEX
-        cv2.putText(image, read, (10, 50), font, 1, color=(0, 255, 255), thickness=2)
+        cv2.putText(frame, read, (10, 50), font, 1, color=(0, 255, 255), thickness=2)
         if not success:
             break
         else:
