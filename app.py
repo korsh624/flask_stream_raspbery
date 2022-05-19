@@ -9,6 +9,8 @@ read="___"
 
 data='open'
 arduino = serial.Serial('/dev/ttyACM0',9600)
+cap=cv2.VideoCapture(0)
+
 def sendmessage():
     count=0
     while (count<1):
@@ -19,12 +21,12 @@ def sendmessage():
         count=count+1
     count=0
 
-camera  = PiCamera()
-camera.resolution = (640, 480)
-camera.framerate = 32
-rawCapture = PiRGBArray(camera, size=(640, 480))
-
-time.sleep(0.1)
+# camera  = PiCamera()
+# camera.resolution = (640, 480)
+# camera.framerate = 32
+# rawCapture = PiRGBArray(camera, size=(640, 480))
+#
+# time.sleep(0.1)
 # while True:
 #     for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
 #         image = frame.array
@@ -42,11 +44,11 @@ def gen_frames():
     while True:
         # data = arduino.readline()
         #prinnt("# read the port data")
-        for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
-            image = frame.array
-            cv2.imshow("Frame", image)
-            key = cv2.waitKey(1) & 0xFF
-
+        # for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
+        #     image = frame.array
+        #     cv2.imshow("Frame", image)
+        #     key = cv2.waitKey(1) & 0xFF
+        success,image=cap.read()
         font = cv2.FONT_HERSHEY_COMPLEX
         cv2.putText(image, read, (10, 50), font, 1, color=(0, 255, 255), thickness=2)
         if not success:
