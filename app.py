@@ -13,6 +13,7 @@ def sendmessage():
     count=0
     while (count<1):
         arduino.write(data.encode())
+        print ("Send message")
         read=arduino.readline()
         print(read)
         time.sleep(1)
