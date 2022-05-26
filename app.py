@@ -6,7 +6,7 @@ data='open'
 read="___"
 
 data='open'
-arduino = serial.Serial('/dev/ttyACM0',9600)
+arduino = serial.Serial('COM10',9600)
 cap=cv2.VideoCapture(0)
 print("connected camera")
 def sendmessage():
@@ -20,6 +20,13 @@ def sendmessage():
         time.sleep(1)
         count=count+1
     count=0
+def encode_string():
+    global read
+    point1=0
+    if read != "___":
+        for i in read:
+            if read[i]=="*":
+                point1=i
 
 app = Flask(__name__)
 def gen_frames():
@@ -28,7 +35,7 @@ def gen_frames():
         font = cv2.FONT_HERSHEY_COMPLEX
         if read!="___":
             print("print teleometry")
-            cv2.putText(frame, read, (10, 50), font, 1, color=(0, 255, 255), thickness=2)
+            cv2.putText(frame, read, (10, 50), font, 2, color=(0, 255, 255), thickness=2)
         if not success:
             break
         else:
